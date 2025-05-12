@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0" />
+    <meta name="keywords" content="iOS证书在线检测,ipa证书检测,p12证书检测,描述文件检测,苹果企业证书检测,掉签检测" />
+    <meta name="description" content="iOS证书在线检测,ipa证书检测,p12证书检测,描述文件检测,苹果企业证书检测,掉签检测" />
+	<title>iOS证书在线检测</title>
+	<link rel="icon" type="image/ico" href="favicon.ico">
+	<link rel="stylesheet" href="static/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="static/css/animate.css" />
+	<link rel="stylesheet" href="static/css/font-awesome.css" />
+	<link rel="stylesheet" href="static/css/index.css" />
+</head>
+
+<body>
+	<input type="file" name="uploadfile" class="hide" onchange="handleFileUpload(this.files, $(this))" data-target=""
+		id="uploadfile" />
+	<div class="content container mt-80 inner-content">
+	    <div class="col-md-12">
+			<div class="col-md-offset-8 text-center">
+				<button type="button" class="btn btn-success" onclick="window.open('https://www.test.com/')">加入频道</button>
+				<p style="color:red">可收到掉签实时通知</p>
+			</div>
+		<h3 class="text-center font-36 font-cert-check-title">
+			iOS 证书在线检测
+		</h3>
+		<div class="text-center cert mt-30 col-md-8 col-md-offset-2">
+			<div class="form-horizontal text-center" id="checkStatus">
+				<ul id="certCheckTab" class="nav nav-tabs hide">
+					<li class="active">
+						<a href="index.html#certFile" data-id="file" data-toggle="tab">
+							p12 文件检测
+						</a>
+					</li>
+					<li>
+						<a href="index.html#shortUrl" data-id="url" data-toggle="tab">
+							安装包检测
+						</a>
+					</li>
+				</ul>
+				<div id="certCheckTabContent" class="tab-content">
+					<div class="tab-pane fade active in" id="shortUrl">
+						<h5 class="url-title">请上传：mobileprovision、p12或ipa文件</h5>
+						<div class="container-fluid">
+							<div class="row">
+								<div class="col-md-12">
+									<div class="upload-img-init" id="uploadIpa" style="">
+										<img id="" src="static/picture/ipa_pic.png" style=""
+											class="img-responsive center-block file-icon" />
+										<div class="text-center upload-tips">
+											<p>点击选择文件或拖拽文件至此区域</p>
+										</div>
+										<div class="text-center upload-tips">
+											<p>（支持mobileprovision、p12和ipa）</p>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="hide text-center" id="certResult">
+						<h5 class="url-title mb-30">检测结果</h5>
+						<p class="hide" id="errorMsg">
+							<span style="color: #fd5a5a; font-size: 18px"> </span>
+							<a href="javascript:void(0);" class="popovers hide" data-html="true" data-container="body"
+								data-toggle="popover" data-trigger="hover" data-placement="bottom" data-content=""
+								data-original-title="" title="">
+								<i class="fa fa-question-circle" style="font-size: 14px; color: #29bb9c">
+								</i>
+							</a>
+						</p>
+						<div class="row text-center" id="certDetail">
+							<div id="fileCertResult">
+								<div class="cert-result mb-40">
+									<div class="cert-icon" style="margin-right: 20px;">
+										<img id="certFlag" src="static/picture/cert_icon_2x.png"
+											class="img-responsive pull-right" />
+									</div>
+									<div class="text-left" style="">
+										<p class="">
+											<span class=""> 证书状态 </span>
+										</p>
+										<p class="" style="margin-bottom: 0">
+											<span class="font-18" style="font-weight: 600">
+												<span class="certStatusSpan" id="certStatus"> </span>
+												<a href="javascript:void(0);" id="certStatusExplain"
+													class="popovers certStatusExplain" data-html="true"
+													data-container="body" data-toggle="popover" data-trigger="hover"
+													data-placement="bottom" data-content="证书已被您自己或苹果官方撤销 (revoke)" data-original-title=""
+													title="">
+													<i class="fa fa-question-circle"
+														style="font-size: 14px; color: #29bb9c">
+													</i>
+												</a>
+											</span>
+										</p>
+									</div>
+								</div>
+								<div class="col-md-12" style="">
+									<p class="check-item" style="">
+										<span class="text-right item-title" style="">
+											证书名称：
+										</span>
+										<span class="text-left item-result certNameSpan" id="certName">
+										</span>
+									</p>
+									<p class="check-item">
+										<span class="text-right item-title"> 过期时间： </span>
+										<span class="text-left item-result certExpireDateSpan" id="certExpireDate">
+										</span>
+									</p>
+									<p class="check-item hide" id="revokedDate">
+										<span class="text-right item-title"> 掉签时间： </span>
+										<span class="text-left item-result certExpireDateSpan" id="certRevokedDate">
+										</span>
+									</p>
+									<div class="provision-detail hide">
+										<p class="check-item">
+											<span class="text-right item-title">
+												mobileprovision 状态：
+											</span>
+											<span class="text-left item-result" id="provisionStatus">
+											</span>
+										</p>
+										<p class="check-item">
+											<span class="text-right item-title">
+												mobileprovision 标识：
+											</span>
+											<span class="text-left item-result" id="identifier">
+											</span>
+										</p>
+										<p class="check-item">
+											<span class="text-right item-title">
+												mobileprovision 过期时间：
+											</span>
+											<span class="text-left item-result" id="provisionExpireDate">
+											</span>
+										</p>
+									</div>
+									<p class="check-item provisionSignType">
+											<span class="text-right item-title"> 证书类型： </span>
+											<span class="text-left item-result" id="certType">
+											</span>
+										</p>
+									<p class="check-item hide" style="" id="appName">
+										<span class="text-right item-title" style="">
+											应用名称：
+										</span>
+										<span class="text-left item-result appNameSpan"> </span>
+									</p>
+
+									<p class="check-item hide" style="" id="bundleId">
+										<span class="text-right item-title" style="">
+											bundle id：
+										</span>
+										<span class="text-left item-result bundleIdSpan"> </span>
+									</p>
+                                    
+                                    <p class="check-item hide" id="sha1Row">
+                                      <span class="text-right item-title" >SHA1：</span>
+                                      <span class="text-left item-result" id=certSha1></span>
+                                    </p>
+                                    
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="text-center row hide" id="search">
+						<img src="static/picture/search.gif" class="img-responsive center-block" />
+						<p class="">检测中...</p>
+					</div>
+				</div>
+				<div class="row mb-30">
+					<a style="display: inline-block; padding: 6px 13px" class="btn-u h-30 mt-30 btn-check hide"
+						id="recheckBtn" onclick="toggleRes()">
+						<span class="font-13"> 继续检测 </span>
+					</a>
+				</div>
+				<div class="alert alert-warning alert-dismissablewarning mb-0 mt-50 text-left" id="fileCheckAlert"
+					style="border-radius: 0;border: none;color: #555;margin-bottom: 0px;">
+					<i class="fa fa-exclamation-circle"> </i>
+					<span class="ml-5" style="margin-left: 5px">
+						通过ipa安装包进行检测，检测结果会有10%左右的误差。
+					</span>
+					<br />
+					<i class="fa fa-exclamation-circle"> </i>
+					<span class="ml-5" style="margin-left: 5px">
+						证书检测结果若为掉签，新用户将无法安装，老用户会陆续无法打开应用。
+					</span>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script src="static/js/jquery.min.js"></script>
+	<script src="static/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="static/js/app-info-parser.js"></script>
+	<script src="static/js/layer.js"></script>
+	<script src="static/js/zip.js"></script>
+	<script src="static/js/mime-types.js"></script>
+	<script src="static/js/UnZipArchive.js"></script>
+	<script src="static/js/index.js"></script>
+	<script>
+	$(document).ready(function(){
+	    $('.certStatusExplain').popover();
+	});
+</script>
+</body>
+</html>
