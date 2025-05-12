@@ -9,9 +9,9 @@
 4.优化检测证书准确性  
 5.支持多种证书状态并高亮显示  
 6.支持证书掉签时间显示  
-7.自动识别证书类型in-house或ad-hoc
-8.增加显示证书sha1指纹
-9.支持适配任意客户端手机、pc、ipad等设备
+7.自动识别证书类型in-house或ad-hoc  
+8.增加显示证书sha1指纹  
+9.支持适配任意客户端手机、pc、ipad等设备  
 
 
 ## 二、使用方法：
@@ -41,5 +41,5 @@ http://www.example.com;
 ## 三、效果展示：  
 ![](https://github.com/Forever18/ioscertcheck/blob/main/example/p12.png)  
 ![](https://github.com/Forever18/ioscertcheck/blob/main/example/ipa.png)  
-![](https://github.com/Forever18/ioscertcheck/blob/main/example/provision.png) 
+![](https://github.com/Forever18/ioscertcheck/blob/main/example/provision.png)  
 
